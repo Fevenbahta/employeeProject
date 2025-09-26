@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import com.example.demo.Entity.EmployeeEntity;
+import com.example.demo.dto.EmployeeDto;
 import com.example.demo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,8 +10,9 @@ import org.springframework.stereotype.Service;
 public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
-    public String getemployee(Integer id) {
-      String employee =employeeRepository.getemployee(id);
-        return employee;
+    public EmployeeDto getemployee(Integer id) {
+        EmployeeEntity employee =employeeRepository.getemployee(id);
+        EmployeeDto employeeDto = new EmployeeDto();
+        return employeeDto.EmployeeMapper(employee);
     }
 }
